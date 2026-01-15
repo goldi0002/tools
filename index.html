@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jokeApp">
+
+<head>
+    <!-- ======================================================
+    BASIC SEO / DOCUMENT
+    ====================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Random Joke Generator | Free Multi-Language Joke App (No Login)</title>
+
+    <meta name="description"
+        content="Enjoy unlimited free jokes with our Random Joke Generator. Multi-language support, instant jokes, favorites and sharing. No signup required. Powered by JokeAPI.">
+
+        <meta name="keywords" content="
+        random joke generator,
+        free joke app,
+        funny jokes online,
+        dad jokes,
+        programming jokes,
+        clean jokes,
+        one liner jokes,
+        joke of the day,
+        multi language jokes,
+        joke generator website,
+        online joke app,
+        joke api demo,
+        funny quotes,
+        entertainment app
+        ">
+        
+
+    <meta name="author" content="Random Joke Generator App">
+    <meta name="application-name" content="Random Joke Generator">
+    <meta name="language" content="en">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="classification" content="entertainment, humor, jokes">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- ======================================================
+     ROBOTS & CRAWLING
+====================================================== -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+
+    <!-- ======================================================
+     CANONICAL & LANGUAGE
+====================================================== -->
+    <link rel="canonical" href="https://yourdomain.com/">
+
+    <link rel="alternate" hreflang="en" href="https://yourdomain.com/">
+    <link rel="alternate" hreflang="x-default" href="https://yourdomain.com/">
+
+    <!-- ======================================================
+     GEO TARGETING (OPTIONAL)
+====================================================== -->
+    <meta name="geo.region" content="IN">
+    <meta name="geo.placename" content="India">
+    <meta name="geo.position" content="20.5937;78.9629">
+    <meta name="ICBM" content="20.5937, 78.9629">
+
+    <!-- ======================================================
+     SECURITY / REFERRER
+====================================================== -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ======================================================
+     THEME / MOBILE / PWA
+====================================================== -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Joke Generator">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-touch-fullscreen" content="yes">
+
+    <!-- ======================================================
+     OPEN GRAPH (FACEBOOK / LINKEDIN / WHATSAPP)
+====================================================== -->
+    <meta property="og:title" content="Random Joke Generator | Free Multi-Language Joke App">
+    <meta property="og:description"
+        content="Laugh instantly with our free random joke generator. Multi-language jokes, favorites and sharing. No login required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:image" content="https://yourdomain.com/og-image.png">
+    <meta property="og:site_name" content="Random Joke Generator">
+    <meta property="og:locale" content="en_US">
+
+    <!-- ======================================================
+     TWITTER CARD
+====================================================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Random Joke Generator | Free Joke App">
+    <meta name="twitter:description"
+        content="Unlimited jokes in multiple languages. Clean UI, fast SPA, powered by JokeAPI.">
+    <meta name="twitter:image" content="https://yourdomain.com/twitter-image.png">
+    <meta name="twitter:site" content="@yourtwitterhandle">
+
+    <!-- ======================================================
+     SEARCH CONSOLE VERIFICATION (OPTIONAL)
+====================================================== -->
+    <meta name="google-site-verification" content="REPLACE_WITH_GOOGLE_TOKEN">
+    <meta name="msvalidate.01" content="REPLACE_WITH_BING_TOKEN">
+
+    <!-- ======================================================
+     GOOGLE UX HINTS
+====================================================== -->
+    <meta name="google" content="notranslate">
+
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --dark: #2d3748;
+            --light: #f7fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .card-header-custom {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .card-header-custom h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+        }
+
+        .card-header-custom p {
+            margin: 0;
+            opacity: 0.95;
+            font-size: 1rem;
+        }
+
+        .card-body-custom {
+            padding: 40px 30px;
+        }
+
+        .language-section {
+            margin-bottom: 30px;
+        }
+
+        .language-section label {
+            display: block;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-select {
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            padding: 12px 16px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        .joke-display {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            padding: 35px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .joke-display::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 60px;
+            color: rgba(102, 126, 234, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .joke-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            text-align: center;
+        }
+
+        .joke-single {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--dark);
+        }
+
+        .joke-setup {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .joke-delivery {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .loading-state {
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.3em;
+        }
+
+        .error-state {
+            text-align: center;
+            color: #dc3545;
+        }
+
+        .joke-meta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .badge-custom {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .badge-category {
+            background: #e9d8fd;
+            color: #6b46c1;
+        }
+
+        .badge-type {
+            background: #c6f6d5;
+            color: #276749;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .btn-custom {
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-outline-custom {
+            background: white;
+            border: 2px solid #e2e8f0;
+            color: var(--dark);
+        }
+
+        .btn-outline-custom:hover {
+            background: #f8f9fa;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-custom:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 25px;
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer-text a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .toast-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        .toast-notification.show {
+            display: flex;
+        }
+
+        .toast-notification.success {
+            border-left: 4px solid #48bb78;
+        }
+
+        .toast-notification.error {
+            border-left: 4px solid #f56565;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-in;
+        }
+
+        @media (max-width: 576px) {
+            .card-header-custom {
+                padding: 30px 20px;
+            }
+
+            .card-header-custom h1 {
+                font-size: 1.5rem;
+            }
+
+            .card-body-custom {
+                padding: 30px 20px;
+            }
+
+            .joke-display {
+                padding: 25px 20px;
+            }
+
+            .joke-single,
+            .joke-setup,
+            .joke-delivery {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .action-buttons {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body ng-controller="JokeController">
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification" ng-class="toast.type" ng-if="toast.show">
+        <i class="fas"
+            ng-class="{'fa-check-circle': toast.type === 'success', 'fa-exclamation-circle': toast.type === 'error'}"></i>
+        <span>{{ toast.message }}</span>
+    </div>
+
+    <div class="app-container">
+        <div class="main-card">
+            <!-- Header -->
+            <div class="card-header-custom">
+                <h1>
+                    <i class="fas fa-laugh-beam"></i> Joke Generator
+                </h1>
+                <p>Get ready to laugh with jokes in multiple languages!</p>
+            </div>
+
+            <!-- Body -->
+            <div class="card-body-custom">
+                <!-- Language Selector -->
+                <div class="language-section">
+                    <label for="langSelect">
+                        <i class="fas fa-globe"></i> Select Language
+                    </label>
+                    <select id="langSelect" class="form-select" ng-model="lang" ng-change="loadJoke()"
+                        ng-disabled="loading">
+                        <option ng-repeat="l in languages" value="{{ l.code }}">{{ l.name }}</option>
+                    </select>
+                </div>
+
+                <!-- Joke Display -->
+                <div class="joke-display">
+                    <!-- Loading State -->
+                    <div ng-if="loading" class="loading-state">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3 mb-0">Fetching a hilarious joke...</p>
+                    </div>
+
+                    <!-- Error State -->
+                    <div ng-if="!loading && error" class="error-state fade-in">
+                        <i class="fas fa-exclamation-triangle fa-2x mb-3"></i>
+                        <p class="mb-0">{{ error }}</p>
+                    </div>
+
+                    <!-- Joke Content -->
+                    <div ng-if="!loading && !error && joke" class="joke-content fade-in">
+                        <!-- Single-part joke -->
+                        <div ng-if="joke.type === 'single'" class="joke-single">
+                            {{ joke.joke }}
+                        </div>
+
+                        <!-- Two-part joke -->
+                        <div ng-if="joke.type === 'twopart'">
+                            <div class="joke-setup">{{ joke.setup }}</div>
+                            <div class="joke-delivery">{{ joke.delivery }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Joke Metadata -->
+                <div ng-if="!loading && !error && joke" class="joke-meta fade-in">
+                    <span class="badge-custom badge-category">
+                        <i class="fas fa-tag"></i> {{ joke.category || 'Any' }}
+                    </span>
+                    <span class="badge-custom badge-type">
+                        <i class="fas fa-list"></i> {{ joke.type || 'single' }}
+                    </span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-custom btn-primary-custom" ng-click="loadJoke()" ng-disabled="loading">
+                        <i class="fas fa-sync-alt" ng-class="{'fa-spin': loading}"></i>
+                        <span ng-if="!loading">Get New Joke</span>
+                        <span ng-if="loading">Loading...</span>
+                    </button>
+
+                    <button class="btn btn-custom btn-outline-custom" ng-click="markFavorite()"
+                        ng-disabled="loading || !joke">
+                        <i class="fas fa-heart"></i> Favorite
+                    </button>
+
+                    <button class="btn btn-custom btn-outline-custom" ng-click="shareJoke()"
+                        ng-disabled="loading || !joke">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+
+                    <button class="btn btn-custom btn-outline-custom" ng-click="viewFavorites()" ng-disabled="loading">
+                        <i class="fas fa-list"></i> Favorites ({{ favoritesCount }})
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-text">
+            <p class="mb-0">
+                Powered by <a href="https://jokeapi.dev/" target="_blank">JokeAPI</a> |
+                Made with <i class="fas fa-heart text-danger"></i> and AngularJS
+            </p>
+        </div>
+    </div>
+
+    <script>
+        angular.module("jokeApp", [])
+            .controller("JokeController", function ($scope, $http, $timeout) {
+
+                // Initialize data
+                $scope.languages = [
+                    { code: "en", name: "🇬🇧 English" },
+                    { code: "de", name: "🇩🇪 German" },
+                    { code: "es", name: "🇪🇸 Spanish" },
+                    { code: "fr", name: "🇫🇷 French" },
+                    { code: "pt", name: "🇵🇹 Portuguese" },
+                    { code: "cs", name: "🇨🇿 Czech" }
+                ];
+
+                $scope.lang = "en";
+                $scope.loading = false;
+                $scope.joke = null;
+                $scope.error = null;
+                $scope.toast = { show: false, message: '', type: 'success' };
+                $scope.favoritesCount = 0;
+
+                // Load favorites count on init
+                $scope.updateFavoritesCount = function () {
+                    try {
+                        var favorites = JSON.parse(localStorage.getItem('jokeFavorites') || '[]');
+                        $scope.favoritesCount = favorites.length;
+                    } catch (e) {
+                        $scope.favoritesCount = 0;
+                    }
+                };
+
+                // Show toast notification
+                $scope.showToast = function (message, type) {
+                    $scope.toast = { show: true, message: message, type: type || 'success' };
+                    $timeout(function () {
+                        $scope.toast.show = false;
+                    }, 3000);
+                };
+
+                // Load joke from API
+                $scope.loadJoke = function () {
+                    $scope.loading = true;
+                    $scope.error = null;
+
+                    // <-- changed: use local API proxy instead of external direct URL
+                    var url = "/api/joke?lang=" + $scope.lang;
+
+                    $http.get(url)
+                        .then(function (response) {
+                            if (response.data.error) {
+                                $scope.error = "Couldn't fetch a joke. Please try again!";
+                                $scope.joke = null;
+                            } else {
+                                $scope.joke = response.data;
+                                $scope.error = null;
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error("Error fetching joke:", error);
+                            $scope.error = "Network error. Please check your connection.";
+                            $scope.joke = null;
+                        })
+                        .finally(function () {
+                            $scope.loading = false;
+                        });
+                };
+
+                // Mark joke as favorite
+                $scope.markFavorite = function () {
+                    if (!$scope.joke) return;
+
+                    try {
+                        var favorites = JSON.parse(localStorage.getItem('jokeFavorites') || '[]');
+
+                        // Check for duplicates
+                        var isDuplicate = favorites.some(function (fav) {
+                            if ($scope.joke.type === 'single') {
+                                return fav.joke === $scope.joke.joke;
+                            } else {
+                                return fav.setup === $scope.joke.setup && fav.delivery === $scope.joke.delivery;
+                            }
+                        });
+
+                        if (isDuplicate) {
+                            $scope.showToast('This joke is already in favorites!', 'error');
+                            return;
+                        }
+
+                        // Add to favorites
+                        var favoriteJoke = {
+                            type: $scope.joke.type,
+                            category: $scope.joke.category,
+                            joke: $scope.joke.joke,
+                            setup: $scope.joke.setup,
+                            delivery: $scope.joke.delivery,
+                            language: $scope.lang,
+                            savedAt: new Date().toISOString()
+                        };
+
+                        favorites.push(favoriteJoke);
+                        localStorage.setItem('jokeFavorites', JSON.stringify(favorites));
+
+                        $scope.updateFavoritesCount();
+                        $scope.showToast('Joke added to favorites!', 'success');
+                    } catch (e) {
+                        console.error("Error saving favorite:", e);
+                        $scope.showToast('Failed to save favorite', 'error');
+                    }
+                };
+
+                // Share joke
+                $scope.shareJoke = function () {
+                    if (!$scope.joke) return;
+
+                    var jokeText = '';
+
+                    if ($scope.joke.type === 'single') {
+                        jokeText = $scope.joke.joke;
+                    } else {
+                        jokeText = $scope.joke.setup + '\n\n' + $scope.joke.delivery;
+                    }
+
+                    // Try Web Share API
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Check out this joke!',
+                            text: jokeText
+                        }).then(function () {
+                            $scope.showToast('Joke shared successfully!', 'success');
+                        }).catch(function (error) {
+                            if (error.name !== 'AbortError') {
+                                $scope.copyToClipboard(jokeText);
+                            }
+                        });
+                    } else {
+                        // Fallback to clipboard
+                        $scope.copyToClipboard(jokeText);
+                    }
+                };
+
+                // Copy to clipboard helper
+                $scope.copyToClipboard = function (text) {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text)
+                            .then(function () {
+                                $scope.$apply(function () {
+                                    $scope.showToast('Joke copied to clipboard!', 'success');
+                                });
+                            })
+                            .catch(function () {
+                                $scope.$apply(function () {
+                                    $scope.showToast('Failed to copy joke', 'error');
+                                });
+                            });
+                    } else {
+                        // Fallback for older browsers
+                        var textArea = document.createElement("textarea");
+                        textArea.value = text;
+                        textArea.style.position = "fixed";
+                        textArea.style.opacity = "0";
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        try {
+                            document.execCommand('copy');
+                            $scope.showToast('Joke copied to clipboard!', 'success');
+                        } catch (err) {
+                            $scope.showToast('Failed to copy joke', 'error');
+                        }
+                        document.body.removeChild(textArea);
+                    }
+                };
+
+                // View favorites
+                $scope.viewFavorites = function () {
+                    try {
+                        var favorites = JSON.parse(localStorage.getItem('jokeFavorites') || '[]');
+
+                        if (favorites.length === 0) {
+                            $scope.showToast('No favorites yet!', 'error');
+                            return;
+                        }
+
+                        var message = 'You have ' + favorites.length + ' favorite joke(s).\n\n';
+                        message += 'View them in browser console (F12) or clear them using the button below.';
+
+                        if (confirm(message + '\n\nWould you like to clear all favorites?')) {
+                            localStorage.removeItem('jokeFavorites');
+                            $scope.updateFavoritesCount();
+                            $scope.showToast('Favorites cleared!', 'success');
+                        }
+                    } catch (e) {
+                        $scope.showToast('Failed to load favorites', 'error');
+                    }
+                };
+
+                // Initialize
+                $scope.updateFavoritesCount();
+                $scope.loadJoke();
+            });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

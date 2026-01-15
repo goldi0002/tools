@@ -19,6 +19,7 @@ app.get('/jokes', (req, res) => {
 
 // API route for fetching jokes
 app.get('/api/joke', async (req, res) => {
+  console.log('Received request for a joke');
   const lang = req.query.lang || 'en';
   try {
     const response = await axios.get(

@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-
     "build": "cd ../client && npm install && npm run build && rm -rf ../server/public && cp -r dist ../server/public",
-
     "start": "node index.js"
   },
   "keywords": [],
@@ -16,9 +14,11 @@
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.2.4",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "fs": "^0.0.1-security"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
-  }
+  },
+  "type": "module"
 }

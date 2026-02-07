@@ -1,25 +1,25 @@
 import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
 import path from "path";
-dotenv.config();
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
-app.use(cors());
-app.use(express.json());
-const PORT = process.env.PORT || 4000;
-
-// Serve React
-app.use(express.static(path.join(__dirname, "public")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
+const PORT = process.env.PORT || 3000;
 
 app.get("/health", (req, res) => {
-  res.json({ status: "OK" });
+  res.json({ ok: true });
 });
 
-app.listen(PORT, () =>
-  console.log(`API running on http://localhost:${PORT}`)
-);
+app.use(express.static(path.join(__dirname, "public")));
+
+// only enable AFTER React build exists
+if (process.env.NODE_ENV === "production") {
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+  });
+}
+app.listen(PORT, () => {
+  console.log("Listening on", PORT);
+});

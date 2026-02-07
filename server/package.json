@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
 
-    "build": "cd ../client && npm install && npm run build && rm -rf ../server/public && cp -r build ../server/public",
+    "build": "cd ../client && npm install && npm run build && rm -rf ../server/public && cp -r dist ../server/public",
 
     "start": "node index.js"
   },

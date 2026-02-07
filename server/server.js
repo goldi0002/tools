@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // only enable AFTER React build exists
 if (process.env.NODE_ENV === "production") {
-  app.get("*", (req, res) => {
+  app.use((req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
   });
 }

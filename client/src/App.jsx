@@ -7,7 +7,6 @@ function App() {
   useEffect(() => {
     api.get("https://jokes-e0qo.onrender.com/health").then(res => setStatus(res.data.status));
   }, []);
-
   return <h1>Backend status: {status}</h1>;
 }
 

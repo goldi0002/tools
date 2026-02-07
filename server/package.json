@@ -2,10 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon index.js",
-    "start": "NODE_ENV=production node index.js"
+    "dev": "nodemon index.js",
+
+    "build": "cd ../client && npm install && npm run build && rm -rf ../server/public && cp -r build ../server/public",
+
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",

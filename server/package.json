@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon server.js",
     "build": "cd ../client && npm install && npm run build && rm -rf ../server/public && cp -r dist ../server/public",
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

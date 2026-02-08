@@ -3,7 +3,9 @@ import Header from './Layout/Header';
 import Sidebar from './Layout/Sidebar';
 import Footer from './Layout/Footer';
 import HomePage from './pages/HomePage';
-import SectionPlaceholder from './sections/SectionPlaceholder';
+import PlanningSection from './sections/PlanningSection';
+import TextToolsSection from './sections/TextToolsSection';
+import UtilitiesSection from './sections/UtilitiesSection';
 import { homeTools, toolCategories, sectionDetails } from '../data/toolkit';
 
 // ==================== MAIN APP SHELL ====================
@@ -17,6 +19,12 @@ export default function AppShell() {
   };
 
   const activeDetails = sectionDetails[activeSection];
+
+  const sectionContent = {
+    planning: <PlanningSection />,
+    text: <TextToolsSection />,
+    utilities: <UtilitiesSection />
+  };
 
   return (
     <div className="flex h-screen bg-slate-50 dark:bg-slate-950">
@@ -46,11 +54,16 @@ export default function AppShell() {
           {activeSection === 'home' ? (
             <HomePage tools={homeTools} onSelectTool={setActiveSection} />
           ) : (
-            <SectionPlaceholder
-              title={activeDetails?.title}
-              description={activeDetails?.description}
-              highlights={activeDetails?.highlights ?? []}
-            />
+            sectionContent[activeSection] ?? (
+              <div className="max-w-5xl mx-auto">
+                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+                  <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-2">
+                    {activeDetails?.title}
+                  </h2>
+                  <p className="text-slate-600 dark:text-slate-400">{activeDetails?.description}</p>
+                </div>
+              </div>
+            )
           )}
         </main>
 

@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import { api } from "./api/http";
-import  KuchBhiLayout  from "./components/layout.jsx";
+import AppShell from "./components/AppShell.jsx";
 import "./App.css";
+
 function App() {
-  return <KuchBhiLayout />
+  return <AppShell />;
 }
 
 export default App;

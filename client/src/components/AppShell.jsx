@@ -6,8 +6,8 @@ import HomePage from './pages/HomePage';
 import SectionPlaceholder from './sections/SectionPlaceholder';
 import { homeTools, toolCategories, sectionDetails } from '../data/toolkit';
 
-// ==================== MAIN APP COMPONENT ====================
-export default function ToolKit() {
+// ==================== MAIN APP SHELL ====================
+export default function AppShell() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
 

@@ -1,29 +1,30 @@
-import { Bot, Home, Ruler, Sigma, Type, Sparkles, FileText } from 'lucide-react';
+import { CalendarCheck, FileText, Home, Ruler, Timer, Type, Wallet } from 'lucide-react';
 
 export const homeTools = [
-  { id: 'ai', icon: Bot, name: 'AI Helper', description: 'Draft, summarize, and refine ideas', color: 'bg-slate-900' },
-  { id: 'text', icon: FileText, name: 'Word Counter', description: 'Count words, characters, and more', color: 'bg-indigo-500' },
-  { id: 'text', icon: Type, name: 'Case Converter', description: 'Convert text between cases', color: 'bg-sky-500' },
-  { id: 'utilities', icon: Ruler, name: 'Unit Converter', description: 'Convert length, weight, temperature', color: 'bg-emerald-500' },
-  { id: 'calculators', icon: Sigma, name: 'Calculator', description: 'Basic arithmetic calculator', color: 'bg-slate-700' }
+  { id: 'planning', icon: CalendarCheck, name: 'Daily Planner', description: 'Plan tasks, priorities, and wins', color: 'bg-slate-900' },
+  { id: 'planning', icon: Timer, name: 'Focus Timer', description: 'Stay on track with timed sessions', color: 'bg-indigo-500' },
+  { id: 'text', icon: FileText, name: 'Word Counter', description: 'Count words, characters, and more', color: 'bg-sky-500' },
+  { id: 'text', icon: Type, name: 'Case Converter', description: 'Convert text between cases', color: 'bg-emerald-500' },
+  { id: 'utilities', icon: Ruler, name: 'Unit Converter', description: 'Convert length, weight, temperature', color: 'bg-slate-700' },
+  { id: 'finance', icon: Wallet, name: 'Budget Splitter', description: 'Split costs quickly and evenly', color: 'bg-amber-500' }
 ];
 
 export const toolCategories = [
   { id: 'home', name: 'Home', icon: Home },
-  { id: 'ai', name: 'AI Workspace', icon: Bot },
+  { id: 'planning', name: 'Planning', icon: CalendarCheck },
   { id: 'text', name: 'Text Tools', icon: Type },
   { id: 'utilities', name: 'Utilities', icon: Ruler },
-  { id: 'calculators', name: 'Calculators', icon: Sigma }
+  { id: 'finance', name: 'Finance', icon: Wallet }
 ];
 
 export const sectionDetails = {
-  ai: {
-    title: 'AI Workspace',
-    description: 'Kickstart ideas with prompts, summaries, and quick drafts built for everyday tasks.',
+  planning: {
+    title: 'Planning',
+    description: 'Stay focused with daily planning, habit tracking, and time blocks.',
     highlights: [
-      { title: 'Prompt Library', detail: 'Reusable prompts for brainstorming, drafting, and polishing.' },
-      { title: 'Instant Summaries', detail: 'Condense notes, articles, or meeting minutes fast.' },
-      { title: 'Workflow Boosters', detail: 'Shortcuts that keep you in flow while you build.' }
+      { title: 'Daily Planner', detail: 'Capture priorities, to-dos, and wins in one view.' },
+      { title: 'Focus Timer', detail: 'Use quick sessions to keep momentum.' },
+      { title: 'Notes Hub', detail: 'Collect ideas and next steps in a single place.' }
     ]
   },
   text: {
@@ -44,13 +45,13 @@ export const sectionDetails = {
       { title: 'Time Helpers', detail: 'Work with time zones and timelines with confidence.' }
     ]
   },
-  calculators: {
-    title: 'Calculators',
-    description: 'Fast calculations for daily work and planning.',
+  finance: {
+    title: 'Finance',
+    description: 'Quick math helpers for budgets, splits, and estimates.',
     highlights: [
-      { title: 'Basic Calculator', detail: 'Handle standard arithmetic without distraction.' },
-      { title: 'Percent Helper', detail: 'Quickly compare deltas, discounts, and ratios.' },
-      { title: 'Split Costs', detail: 'Share bills or budgets with simple breakdowns.' }
+      { title: 'Budget Splitter', detail: 'Divide shared expenses in seconds.' },
+      { title: 'Percent Helper', detail: 'Compare deltas, discounts, and ratios.' },
+      { title: 'Expense Notes', detail: 'Track quick entries without spreadsheets.' }
     ]
   }
 };

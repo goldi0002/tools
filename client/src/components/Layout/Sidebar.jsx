@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bot, ChevronRight } from 'lucide-react';
+import { ChevronRight, LayoutGrid } from 'lucide-react';
 
 // ==================== SIDEBAR COMPONENT ====================
 const Sidebar = ({ sidebarOpen, activeSection, setActiveSection, toolCategories }) => {
@@ -13,12 +13,12 @@ const Sidebar = ({ sidebarOpen, activeSection, setActiveSection, toolCategories 
       <div className="px-4 py-4 border-b border-white/70 dark:border-slate-800/80">
         <div className="flex items-center justify-center lg:justify-start">
           <div className="w-9 h-9 bg-gradient-to-br from-indigo-500 via-sky-500 to-emerald-400 rounded-2xl flex items-center justify-center shadow-sm">
-            <Bot className="w-4 h-4 text-white" />
+            <LayoutGrid className="w-4 h-4 text-white" />
           </div>
           {sidebarOpen && (
             <div className="ml-3">
-              <h1 className="text-lg font-semibold text-slate-900 dark:text-white">ToolKit</h1>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Workspace</p>
+              <h1 className="text-lg font-semibold text-slate-900 dark:text-white">Daily Tools</h1>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Toolkit</p>
             </div>
           )}
         </div>

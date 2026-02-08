@@ -3,15 +3,15 @@ import React from 'react';
 // ==================== FOOTER COMPONENT ====================
 const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-8">
-      <div className="px-4 md:px-6 py-4">
-        <div className="flex flex-col md:flex-row items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-          <p>© 2024 ToolKit. Simple tools for everyday use.</p>
+    <footer className="glass-panel border-t border-white/70 dark:border-slate-800/80 mt-8">
+      <div className="px-4 md:px-8 py-4">
+        <div className="flex flex-col md:flex-row items-center justify-between text-sm text-slate-600 dark:text-slate-400">
+          <p>© 2024 ToolKit. Simple tools for everyday use. Built with CodeX.</p>
           <div className="flex gap-4 mt-2 md:mt-0">
-            <button className="hover:text-black dark:hover:text-white transition-colors">
+            <button className="hover:text-slate-900 dark:hover:text-white transition-colors">
               Privacy
             </button>
-            <button className="hover:text-black dark:hover:text-white transition-colors">
+            <button className="hover:text-slate-900 dark:hover:text-white transition-colors">
               Terms
             </button>
           </div>

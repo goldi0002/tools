@@ -1,31 +1,23 @@
-import { Home, Wrench, Calculator, FileText, Sparkles } from 'lucide-react';
+import { Home, Ruler, Sigma, Type, FileText, Clock, ClipboardList } from 'lucide-react';
 
 export const homeTools = [
-  { id: 'ai', icon: Sparkles, name: 'AI Helper', description: 'Draft, summarize, and refine ideas', color: 'bg-black dark:bg-white' },
-  { id: 'text', icon: FileText, name: 'Word Counter', description: 'Count words, characters, and more', color: 'bg-gray-900 dark:bg-white' },
-  { id: 'text', icon: FileText, name: 'Case Converter', description: 'Convert text between cases', color: 'bg-gray-800 dark:bg-gray-200' },
-  { id: 'utilities', icon: Wrench, name: 'Unit Converter', description: 'Convert length, weight, temperature', color: 'bg-gray-700 dark:bg-gray-300' },
-  { id: 'calculators', icon: Calculator, name: 'Calculator', description: 'Basic arithmetic calculator', color: 'bg-gray-600 dark:bg-gray-400' }
+  { id: 'text', icon: FileText, name: 'Word Counter', description: 'Count words, characters, and more', color: 'bg-indigo-500' },
+  { id: 'text', icon: Type, name: 'Case Converter', description: 'Convert text between cases', color: 'bg-sky-500' },
+  { id: 'utilities', icon: Ruler, name: 'Unit Converter', description: 'Convert length, weight, temperature', color: 'bg-emerald-500' },
+  { id: 'calculators', icon: Sigma, name: 'Quick Calculator', description: 'Fast arithmetic for daily tasks', color: 'bg-slate-700' },
+  { id: 'time', icon: Clock, name: 'Time Helpers', description: 'Time zones, timers, and converters', color: 'bg-violet-500' }
 ];
 
 export const toolCategories = [
   { id: 'home', name: 'Home', icon: Home },
-  { id: 'ai', name: 'AI Workspace', icon: Sparkles },
-  { id: 'text', name: 'Text Tools', icon: FileText },
-  { id: 'utilities', name: 'Utilities', icon: Wrench },
-  { id: 'calculators', name: 'Calculators', icon: Calculator }
+  { id: 'text', name: 'Text Tools', icon: Type },
+  { id: 'utilities', name: 'Utilities', icon: Ruler },
+  { id: 'calculators', name: 'Calculators', icon: Sigma },
+  { id: 'time', name: 'Time Tools', icon: Clock },
+  { id: 'productivity', name: 'Productivity', icon: ClipboardList }
 ];
 
 export const sectionDetails = {
-  ai: {
-    title: 'AI Workspace',
-    description: 'Kickstart ideas with prompts, summaries, and quick drafts built for everyday tasks.',
-    highlights: [
-      { title: 'Prompt Library', detail: 'Reusable prompts for brainstorming, drafting, and polishing.' },
-      { title: 'Instant Summaries', detail: 'Condense notes, articles, or meeting minutes fast.' },
-      { title: 'Workflow Boosters', detail: 'Shortcuts that keep you in flow while you build.' }
-    ]
-  },
   text: {
     title: 'Text Tools',
     description: 'Clean, format, and analyze text with quick one-click helpers.',
@@ -51,6 +43,24 @@ export const sectionDetails = {
       { title: 'Basic Calculator', detail: 'Handle standard arithmetic without distraction.' },
       { title: 'Percent Helper', detail: 'Quickly compare deltas, discounts, and ratios.' },
       { title: 'Split Costs', detail: 'Share bills or budgets with simple breakdowns.' }
+    ]
+  },
+  time: {
+    title: 'Time Tools',
+    description: 'Everyday time helpers for planning and scheduling.',
+    highlights: [
+      { title: 'Time Zones', detail: 'Compare regions quickly for meetings and planning.' },
+      { title: 'Timer', detail: 'Focus with quick timers and countdowns.' },
+      { title: 'Date Math', detail: 'Add or subtract days with confidence.' }
+    ]
+  },
+  productivity: {
+    title: 'Productivity',
+    description: 'Lightweight checklists and snippets to stay organized.',
+    highlights: [
+      { title: 'Quick Notes', detail: 'Capture notes and snippets in seconds.' },
+      { title: 'Task List', detail: 'Lightweight checklists for daily work.' },
+      { title: 'Templates', detail: 'Reuse common text blocks and formats.' }
     ]
   }
 };

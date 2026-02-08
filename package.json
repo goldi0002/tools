@@ -9,7 +9,7 @@
     "client:preview": "npm --prefix client run preview",
     "server:dev": "npm --prefix server run dev",
     "server:start": "npm --prefix server start",
-    "build": "npm --prefix client run build && rm -rf server/public && cp -r client/dist server/public",
+    "build": "npm --prefix client install && npm --prefix client run build && rm -rf server/public && cp -r client/dist server/public",
     "start": "npm --prefix server start"
   }
 }

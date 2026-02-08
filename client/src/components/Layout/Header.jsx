@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Search, Sun, Moon, Sparkles } from 'lucide-react';
+import { Calculator, Menu, X, Search, Sun, Moon, Sparkles } from 'lucide-react';
 
 // ==================== HEADER COMPONENT ====================
 const Header = ({ sidebarOpen, setSidebarOpen, activeCategory }) => {
@@ -14,7 +14,7 @@ const Header = ({ sidebarOpen, setSidebarOpen, activeCategory }) => {
   }, [darkMode]);
 
   return (
-    <header className="sticky top-0 z-10 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+    <header className="sticky top-0 z-30 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-b border-gray-200 dark:border-gray-800">
       <div className="flex flex-wrap items-center justify-between gap-4 px-4 md:px-6 py-3">
         <div className="flex items-center gap-3">
           <button
@@ -25,10 +25,13 @@ const Header = ({ sidebarOpen, setSidebarOpen, activeCategory }) => {
           </button>
           <div>
             <div className="flex items-center gap-2">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-black text-white dark:bg-white dark:text-black">
+                <Calculator className="h-4 w-4" />
+              </span>
               <h1 className="text-lg font-semibold text-black dark:text-white">ToolKit AI</h1>
               <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs text-gray-600 dark:text-gray-300 px-2 py-0.5">
                 <Sparkles className="w-3.5 h-3.5" />
-                AI Ready
+                Ready to use
               </span>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400">{activeCategory}</p>

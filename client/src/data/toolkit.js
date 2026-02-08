@@ -1,20 +1,18 @@
-import { CalendarCheck, FileText, Home, Ruler, Timer, Type, Wallet } from 'lucide-react';
+import { CalendarCheck, FileText, Home, Ruler, Timer, Type } from 'lucide-react';
 
 export const homeTools = [
   { id: 'planning', icon: CalendarCheck, name: 'Daily Planner', description: 'Plan tasks, priorities, and wins', color: 'bg-slate-900' },
   { id: 'planning', icon: Timer, name: 'Focus Timer', description: 'Stay on track with timed sessions', color: 'bg-indigo-500' },
   { id: 'text', icon: FileText, name: 'Word Counter', description: 'Count words, characters, and more', color: 'bg-sky-500' },
   { id: 'text', icon: Type, name: 'Case Converter', description: 'Convert text between cases', color: 'bg-emerald-500' },
-  { id: 'utilities', icon: Ruler, name: 'Unit Converter', description: 'Convert length, weight, temperature', color: 'bg-slate-700' },
-  { id: 'finance', icon: Wallet, name: 'Budget Splitter', description: 'Split costs quickly and evenly', color: 'bg-amber-500' }
+  { id: 'utilities', icon: Ruler, name: 'Unit Converter', description: 'Convert length, weight, temperature', color: 'bg-slate-700' }
 ];
 
 export const toolCategories = [
   { id: 'home', name: 'Home', icon: Home },
   { id: 'planning', name: 'Planning', icon: CalendarCheck },
   { id: 'text', name: 'Text Tools', icon: Type },
-  { id: 'utilities', name: 'Utilities', icon: Ruler },
-  { id: 'finance', name: 'Finance', icon: Wallet }
+  { id: 'utilities', name: 'Utilities', icon: Ruler }
 ];
 
 export const sectionDetails = {
@@ -43,15 +41,6 @@ export const sectionDetails = {
       { title: 'Unit Converter', detail: 'Length, weight, and temperature conversions in one place.' },
       { title: 'Quick Lookup', detail: 'Find common formulas and references instantly.' },
       { title: 'Time Helpers', detail: 'Work with time zones and timelines with confidence.' }
-    ]
-  },
-  finance: {
-    title: 'Finance',
-    description: 'Quick math helpers for budgets, splits, and estimates.',
-    highlights: [
-      { title: 'Budget Splitter', detail: 'Divide shared expenses in seconds.' },
-      { title: 'Percent Helper', detail: 'Compare deltas, discounts, and ratios.' },
-      { title: 'Expense Notes', detail: 'Track quick entries without spreadsheets.' }
     ]
   }
 };

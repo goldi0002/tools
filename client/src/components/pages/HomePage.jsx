@@ -1,13 +1,19 @@
 import React from 'react';
+import { Calculator } from 'lucide-react';
 import ToolCard from '../Tool/ToolCard';
 
 const HomePage = ({ tools, onSelectTool }) => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-black dark:text-white mb-3">ToolKit AI</h1>
+        <div className="flex items-center gap-3 mb-3">
+          <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
+            <Calculator className="h-6 w-6" />
+          </span>
+          <h1 className="text-3xl font-bold text-black dark:text-white">ToolKit AI</h1>
+        </div>
         <p className="text-lg text-gray-600 dark:text-gray-400">
-          AI-powered helpers and classic utilities to speed up daily work
+          Build tools ready to use with AI-powered helpers and classic utilities.
         </p>
       </div>
 

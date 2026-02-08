@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Home, Wrench, Calculator, FileText, Search, User, Sun, Moon, ChevronRight, Copy, RefreshCw, Hash } from 'lucide-react';
+import { Menu, X, Search, Sun, Moon, Sparkles } from 'lucide-react';
 
 // ==================== HEADER COMPONENT ====================
 const Header = ({ sidebarOpen, setSidebarOpen, activeCategory }) => {
@@ -14,8 +14,8 @@ const Header = ({ sidebarOpen, setSidebarOpen, activeCategory }) => {
   }, [darkMode]);
 
   return (
-    <header className="sticky top-0 z-10 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-      <div className="flex items-center justify-between px-4 md:px-6 py-3">
+    <header className="sticky top-0 z-10 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+      <div className="flex flex-wrap items-center justify-between gap-4 px-4 md:px-6 py-3">
         <div className="flex items-center gap-3">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -24,24 +24,37 @@ const Header = ({ sidebarOpen, setSidebarOpen, activeCategory }) => {
             {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
           <div>
-            <h1 className="text-lg font-semibold text-black dark:text-white">ToolKit</h1>
+            <div className="flex items-center gap-2">
+              <h1 className="text-lg font-semibold text-black dark:text-white">ToolKit AI</h1>
+              <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs text-gray-600 dark:text-gray-300 px-2 py-0.5">
+                <Sparkles className="w-3.5 h-3.5" />
+                AI Ready
+              </span>
+            </div>
             <p className="text-xs text-gray-500 dark:text-gray-400">{activeCategory}</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+        <div className="flex flex-1 items-center justify-center min-w-[200px]">
+          <div className="w-full max-w-md flex items-center gap-2 px-3 py-2 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <Search className="w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Search tools..."
-              className="bg-transparent border-none outline-none text-sm text-gray-600 dark:text-gray-300 placeholder-gray-400 w-32 md:w-48"
+              placeholder="Search tools, workflows, prompts..."
+              className="bg-transparent border-none outline-none text-sm text-gray-600 dark:text-gray-300 placeholder-gray-400 w-full"
             />
           </div>
+        </div>
 
+        <div className="flex items-center gap-2">
+          <button className="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-black text-white text-sm hover:bg-gray-900 transition-colors">
+            <Sparkles className="w-4 h-4" />
+            New AI Tool
+          </button>
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            aria-label="Toggle dark mode"
           >
             {darkMode ? (
               <Sun className="w-5 h-5 text-gray-600 dark:text-gray-300" />

@@ -1,19 +1,19 @@
-import { Home, Wrench, Calculator, FileText, Sparkles } from 'lucide-react';
+import { Bot, Home, Ruler, Sigma, Type, Sparkles, FileText } from 'lucide-react';
 
 export const homeTools = [
-  { id: 'ai', icon: Sparkles, name: 'AI Helper', description: 'Draft, summarize, and refine ideas', color: 'bg-black dark:bg-white' },
-  { id: 'text', icon: FileText, name: 'Word Counter', description: 'Count words, characters, and more', color: 'bg-gray-900 dark:bg-white' },
-  { id: 'text', icon: FileText, name: 'Case Converter', description: 'Convert text between cases', color: 'bg-gray-800 dark:bg-gray-200' },
-  { id: 'utilities', icon: Wrench, name: 'Unit Converter', description: 'Convert length, weight, temperature', color: 'bg-gray-700 dark:bg-gray-300' },
-  { id: 'calculators', icon: Calculator, name: 'Calculator', description: 'Basic arithmetic calculator', color: 'bg-gray-600 dark:bg-gray-400' }
+  { id: 'ai', icon: Bot, name: 'AI Helper', description: 'Draft, summarize, and refine ideas', color: 'bg-slate-900' },
+  { id: 'text', icon: FileText, name: 'Word Counter', description: 'Count words, characters, and more', color: 'bg-indigo-500' },
+  { id: 'text', icon: Type, name: 'Case Converter', description: 'Convert text between cases', color: 'bg-sky-500' },
+  { id: 'utilities', icon: Ruler, name: 'Unit Converter', description: 'Convert length, weight, temperature', color: 'bg-emerald-500' },
+  { id: 'calculators', icon: Sigma, name: 'Calculator', description: 'Basic arithmetic calculator', color: 'bg-slate-700' }
 ];
 
 export const toolCategories = [
   { id: 'home', name: 'Home', icon: Home },
-  { id: 'ai', name: 'AI Workspace', icon: Sparkles },
-  { id: 'text', name: 'Text Tools', icon: FileText },
-  { id: 'utilities', name: 'Utilities', icon: Wrench },
-  { id: 'calculators', name: 'Calculators', icon: Calculator }
+  { id: 'ai', name: 'AI Workspace', icon: Bot },
+  { id: 'text', name: 'Text Tools', icon: Type },
+  { id: 'utilities', name: 'Utilities', icon: Ruler },
+  { id: 'calculators', name: 'Calculators', icon: Sigma }
 ];
 
 export const sectionDetails = {

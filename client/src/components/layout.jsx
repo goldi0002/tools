@@ -19,7 +19,15 @@ export default function ToolKit() {
   const activeDetails = sectionDetails[activeSection];
 
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="flex h-screen bg-slate-50 dark:bg-slate-950">
+      {sidebarOpen && (
+        <button
+          className="fixed inset-0 bg-slate-950/40 backdrop-blur-sm lg:hidden z-20"
+          onClick={() => setSidebarOpen(false)}
+          aria-label="Close sidebar"
+          type="button"
+        />
+      )}
       <Sidebar
         sidebarOpen={sidebarOpen}
         activeSection={activeSection}
@@ -34,7 +42,7 @@ export default function ToolKit() {
           activeCategory={getActiveCategory()}
         />
 
-        <main className="flex-1 overflow-y-auto p-4 md:p-6">
+        <main className="flex-1 overflow-y-auto p-4 md:p-8">
           {activeSection === 'home' ? (
             <HomePage tools={homeTools} onSelectTool={setActiveSection} />
           ) : (

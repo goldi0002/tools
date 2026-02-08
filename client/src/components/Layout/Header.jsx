@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calculator, Menu, X, Search, Sun, Moon, Sparkles } from 'lucide-react';
+import { Bot, Menu, X, Search, Sun, Moon, Sparkles } from 'lucide-react';
 
 // ==================== HEADER COMPONENT ====================
 const Header = ({ sidebarOpen, setSidebarOpen, activeCategory }) => {
@@ -14,55 +14,58 @@ const Header = ({ sidebarOpen, setSidebarOpen, activeCategory }) => {
   }, [darkMode]);
 
   return (
-    <header className="sticky top-0 z-30 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-b border-gray-200 dark:border-gray-800">
-      <div className="flex flex-wrap items-center justify-between gap-4 px-4 md:px-6 py-3">
+    <header className="sticky top-0 z-30 glass-panel">
+      <div className="flex flex-wrap items-center gap-3 px-4 md:px-8 py-4">
         <div className="flex items-center gap-3">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            className="p-2 rounded-full border border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition-colors"
+            aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
           >
             {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
           <div>
             <div className="flex items-center gap-2">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-black text-white dark:bg-white dark:text-black">
-                <Calculator className="h-4 w-4" />
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 via-sky-500 to-emerald-400 text-white shadow-sm">
+                <Bot className="h-4 w-4" />
               </span>
-              <h1 className="text-lg font-semibold text-black dark:text-white">ToolKit AI</h1>
-              <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs text-gray-600 dark:text-gray-300 px-2 py-0.5">
-                <Sparkles className="w-3.5 h-3.5" />
-                Ready to use
-              </span>
+              <div>
+                <h1 className="text-lg font-semibold text-slate-900 dark:text-white">ToolKit AI</h1>
+                <p className="text-xs text-slate-500 dark:text-slate-400">{activeCategory}</p>
+              </div>
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400">{activeCategory}</p>
           </div>
         </div>
 
-        <div className="flex flex-1 items-center justify-center min-w-[200px]">
-          <div className="w-full max-w-md flex items-center gap-2 px-3 py-2 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <Search className="w-4 h-4 text-gray-400" />
+        <div className="order-3 w-full md:order-none md:flex-1">
+          <div className="w-full max-w-xl flex items-center gap-2 px-4 py-2.5 bg-white/80 dark:bg-slate-900/70 rounded-full border border-slate-200/70 dark:border-slate-700/70 shadow-sm focus-within:ring-2 focus-within:ring-slate-400/40 dark:focus-within:ring-slate-500/40">
+            <Search className="w-4 h-4 text-slate-400" />
             <input
               type="text"
               placeholder="Search tools, workflows, prompts..."
-              className="bg-transparent border-none outline-none text-sm text-gray-600 dark:text-gray-300 placeholder-gray-400 w-full"
+              className="bg-transparent border-none outline-none text-sm text-slate-600 dark:text-slate-300 placeholder-slate-400 w-full"
             />
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <button className="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-black text-white text-sm hover:bg-gray-900 transition-colors">
+        <div className="ml-auto flex items-center gap-2">
+          <span className="hidden lg:inline-flex nav-chip">
+            <Sparkles className="h-3.5 w-3.5" />
+            Ready to use
+          </span>
+          <button className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-white text-sm shadow-sm hover:shadow-md hover:bg-slate-800 transition-all">
             <Sparkles className="w-4 h-4" />
             New AI Tool
           </button>
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            className="p-2 rounded-full border border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition-colors"
             aria-label="Toggle dark mode"
           >
             {darkMode ? (
-              <Sun className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              <Sun className="w-5 h-5 text-slate-600 dark:text-slate-300" />
             ) : (
-              <Moon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              <Moon className="w-5 h-5 text-slate-600 dark:text-slate-300" />
             )}
           </button>
         </div>
